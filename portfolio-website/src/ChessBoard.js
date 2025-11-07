@@ -48,7 +48,8 @@ const ChessBoard = () => {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8080/game");
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const socket = new WebSocket(`${protocol}://${window.location.host}/game/game`);
     socketRef.current = socket;
 
     socket.onopen = () => {
@@ -103,9 +104,8 @@ const ChessBoard = () => {
         {board.map((piece, idx) => (
           <div
             key={idx}
-            className={`square ${
-              (Math.floor(idx / 8) + (idx % 8)) % 2 === 0 ? "white" : "black"
-            } ${selected === idx ? "selected" : ""}`}
+            className={`square ${(Math.floor(idx / 8) + (idx % 8)) % 2 === 0 ? "white" : "black"
+              } ${selected === idx ? "selected" : ""}`}
             onClick={() => onSquareClick(idx)}
           >
             {piece && <span className="piece">{piece}</span>}
