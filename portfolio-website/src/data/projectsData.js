@@ -7,7 +7,7 @@ const projectsData = [
     slug: "chess-ai", // URL-friendly identifier for routing
     title: "Chess AI",
     description: "An intelligent chess engine with minimax algorithm and alpha-beta pruning. Features include move validation, checkmate detection, and adjustable difficulty levels.",
-    image: "/chess-screenshot.png", // Place your image in the public folder
+    image: "/chess/chess-screenshot.png", // Place your image in the public folder
     dateCreated: "2022-08",
     liveUrl: "", // Add your live demo URL
     codeUrl: "", // Add your GitHub repository URL

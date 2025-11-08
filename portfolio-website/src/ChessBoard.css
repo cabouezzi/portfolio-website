@@ -18,8 +18,8 @@
 .black { background-color: #b58863; }
 .selected { outline: 2px solid red; }
 .piece {
-  font-size: 32px; /* make the chess symbols big */
-  cursor: pointer; /* changes mouse to pointer on hover */
-  font-family: "Segoe UI Symbol", "Arial", "Noto Sans Symbols", sans-serif; /* ensure chess symbols render */
-  user-select: none; /* prevent selecting text when clicking pieces */
+  width: 80%;       /* scale to fit the square */
+  height: 80%;
+  object-fit: contain;
+  pointer-events: none; /* optional so clicks go to square */
 }

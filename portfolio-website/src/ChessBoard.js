@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ChessBoard.css"; // we’ll style the board
 
-const pieceMap = {
-  K: "♔",
-  Q: "♕",
-  R: "♖",
-  B: "♗",
-  N: "♘",
-  P: "♙",
-  k: "♚",
-  q: "♛",
-  r: "♜",
-  b: "♝",
-  n: "♞",
-  p: "♟",
+const pieceImages = {
+  K: "/chess/pieces/white-king.png",
+  Q: "/chess/pieces/white-queen.png",
+  R: "/chess/pieces/white-rook.png",
+  B: "/chess/pieces/white-bishop.png",
+  N: "/chess/pieces/white-knight.png",
+  P: "/chess/pieces/white-pawn.png",
+  k: "/chess/pieces/black-king.png",
+  q: "/chess/pieces/black-queen.png",
+  r: "/chess/pieces/black-rook.png",
+  b: "/chess/pieces/black-bishop.png",
+  n: "/chess/pieces/black-knight.png",
+  p: "/chess/pieces/black-pawn.png",
 };
 
 function parseFEN(fen) {
@@ -29,7 +29,7 @@ function parseFEN(fen) {
         const empty = parseInt(char, 10);
         for (let i = 0; i < empty; i++) squares.push(null);
       } else {
-        squares.push(pieceMap[char] || null);
+        squares.push(pieceImages[char] || null);
       }
     }
   }
@@ -108,7 +108,7 @@ const ChessBoard = () => {
               } ${selected === idx ? "selected" : ""}`}
             onClick={() => onSquareClick(idx)}
           >
-            {piece && <span className="piece">{piece}</span>}
+            {piece && <img src={piece} alt="" className="piece" />}
           </div>
         ))}
       </div>
