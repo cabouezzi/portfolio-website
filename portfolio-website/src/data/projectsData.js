@@ -1,8 +1,10 @@
 // Central location for all project data
 // To add a new project, simply add a new object to this array
-import ChessBoard from "../projects/ChessBoard"; 
+import ChessBoard from "../projects/ChessBoard";
+import InteractiveWeather from "../projects/InteractiveWeather";
 
 export const projectsData = [
+  // Chess AI Project
   {
     id: 1,
     slug: "chess-ai", // URL-friendly identifier for routing
@@ -10,8 +12,7 @@ export const projectsData = [
     description: "An intelligent chess engine with minimax algorithm and alpha-beta pruning. Features include move validation, checkmate detection, and adjustable difficulty levels.",
     image: "/chess/chess-screenshot.png", // Place your image in the public folder
     dateCreated: "2022-08",
-    liveUrl: "", // Add your live demo URL
-    codeUrl: "", // Add your GitHub repository URL
+    codeUrl: "https://github.com/cabouezzi/Chess-AI", // Add your GitHub repository URL
     tags: ["Python", "AI", "Minimax Algorithm", "Game Development", "Data Structures"],
     featured: true,
     // Preview component configuration
@@ -42,6 +43,45 @@ export const projectsData = [
       "Chess strategy and position evaluation techniques"
     ]
   },
+  // Interactive Weather Visualization Project
+  {
+    id: 2,
+    slug: "interactive-weather",
+    title: "Interactive Weather",
+    description: "A 3D visualization of global wind and temperature patterns using aggregated NOAA data, built in Unity with custom shaders.",
+    image: "/weather/example.png",
+    dateCreated: "2025-02",
+    codeUrl: "https://github.com/cabouezzi/Interactive-Weather",
+    tags: ["Unity", "C#", "ShaderLab", "3D Visualization", "Data Visualization"],
+    featured: false,
+    previewComponent: InteractiveWeather,
+    previewHeight: "500px",
+    fullDescription: `
+    Interactive Weather is a 3D visualization that depicts global wind and temperature patterns
+    using NOAA atmospheric data aggregated from 2022. The project processes and averages the 
+    dataset into a single vector field representing global air movement and temperature distribution.
+
+    Built with Unity and ShaderLab, the visualization displays a rotating Earth with animated wind 
+    vectors and color-mapped temperature gradients, creating a scientific yet visually engaging 
+    representation of global climate behavior.
+
+    Key features include:
+    - 3D globe rendering with temperature coloration and wind vectors
+    - Data aggregated from NOAA’s 2022 global atmospheric datasets
+    - Smooth shader-based animation of directional wind flows
+    - Emphasis on clarity, performance, and educational visualization
+  `,
+    challenges: [
+      "Processing and averaging large meteorological datasets into a manageable vector field",
+      "Achieving smooth, visually coherent wind animations without live data streams",
+      "Designing shaders that effectively represent both direction and magnitude information"
+    ],
+    learnings: [
+      "Integrating scientific data into visual experiences",
+      "Efficient shader and rendering optimization in Unity",
+      "Creating educational visualizations from complex datasets"
+    ]
+  }
   // Add more projects here following this structure:
   // {
   //   id: 2,
