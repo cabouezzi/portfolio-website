@@ -30,7 +30,7 @@ Worked on the frontend of the EasyPay app in Retail Engineering, the POS softwar
       {
         start: "May 2024",
         end: "Aug 2024",
-        header: "Software Engineering Intern (Python, LLM, RAG)",
+        header: "Software Engineering Intern",
         description: `
 Summer internship on the Cellular Platform Software team in Wireless Technologies Engineering. Pioneered a new internal tool for summarizing, comparing, and answering questions related to hardware specifications.
 - Significantly boosted developer productivity for the release of the C1 and C1X modem chips a year later
@@ -49,7 +49,7 @@ Summer internship on the Cellular Platform Software team in Wireless Technologie
       {
         start: "Jun 2023",
         end: "Sep 2023",
-        header: "iOS Software Development Intern (Swift, Objective-C)",
+        header: "iOS Software Development Intern",
         description: `
 Remote summer internship working as a developer for the Lexicomp iOS mobile app. Work consisted mainly of enhancing legacy code, working on new UI features, and maintenance of local data handling.
 - Rewrote “God class” core for improved expandability, parallel tasks, SRP, and new functionality

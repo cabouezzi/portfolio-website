@@ -99,7 +99,7 @@ const ChessBoard = () => {
 
   return (
     <div>
-      <h2>Chess vs AI</h2>
+      <h2>Chaniel's Chess Engine</h2>
       <div className="board">
         {board.map((piece, idx) => (
           <div

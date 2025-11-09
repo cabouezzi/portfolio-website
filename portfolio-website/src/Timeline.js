@@ -1,10 +1,54 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+
+dayjs.extend(customParseFormat);
 
 export default function Timeline({ timelineData = [] }) {
+  // Flatten roles with parent entry
+  const flattenedRoles = [];
+  timelineData.forEach((entry) => {
+    if (entry.roles?.length) {
+      entry.roles.forEach((role) => {
+        flattenedRoles.push({ ...role, parentEntry: entry });
+      });
+    } else {
+      flattenedRoles.push({ parentEntry: entry });
+    }
+  });
+
+  // Sort by end date descending (treat "Present" as future)
+  flattenedRoles.sort((a, b) => {
+    const parseDate = (d) =>
+      d === "Present" ? dayjs("2100-01-01") : dayjs(d, "MMM YYYY");
+
+    const dateA = parseDate(a.end || a.start);
+    const dateB = parseDate(b.end || b.start);
+
+    return dateB.isBefore(dateA) ? -1 : dateB.isAfter(dateA) ? 1 : 0; // reverse
+  });
+
+  // Split same organization if interrupted
+  const splitEntries = [];
+  let lastOrg = null;
+  let currentEntry = null;
+
+  flattenedRoles.forEach((role) => {
+    const org = role.parentEntry.title;
+    if (org !== lastOrg) {
+      currentEntry = { title: org, logo: role.parentEntry.logo, roles: [] };
+      splitEntries.push(currentEntry);
+    }
+    if (role.header || role.description || role.start) {
+      currentEntry.roles.push(role);
+    }
+    lastOrg = org;
+  });
+
   return (
     <div className="ml-8 flex flex-col gap-6">
-      {timelineData.map((entry, idx) => (
+      {splitEntries.map((entry, idx) => (
         <TimelineEntry key={idx} entry={entry} />
       ))}
     </div>
@@ -51,19 +95,32 @@ function TimelineEntry({ entry }) {
       {/* Column 3: Roles */}
       {entry.roles?.map((role, idx) => (
         <div key={`role-${idx}`} style={{ gridColumn: 3, gridRow: idx + 2 }}>
-          {/* Bigger role header */}
-          <div className="text-base md:text-lg font-semibold text-slate-300">{role.header}</div>
-          <div className="prose prose-invert prose-sm max-w-none text-slate-400">
-            <ReactMarkdown
-              components={{
-                p: ({ children }) => <p className="text-slate-300 text-sm leading-relaxed mb-1">{children}</p>,
-                li: ({ children }) => <li className="ml-4 list-disc text-slate-300 text-sm leading-relaxed">{children}</li>,
-                ul: ({ children }) => <ul className="mb-1">{children}</ul>,
-              }}
-            >
-              {role.description}
-            </ReactMarkdown>
-          </div>
+          {role.header && (
+            <div className="text-base md:text-lg font-semibold text-slate-300">
+              {role.header}
+            </div>
+          )}
+          {role.description && (
+            <div className="prose prose-invert prose-sm max-w-none text-slate-400">
+              <ReactMarkdown
+                components={{
+                  p: ({ children }) => (
+                    <p className="text-slate-300 text-sm leading-relaxed mb-1">
+                      {children}
+                    </p>
+                  ),
+                  li: ({ children }) => (
+                    <li className="ml-4 list-disc text-slate-300 text-sm leading-relaxed">
+                      {children}
+                    </li>
+                  ),
+                  ul: ({ children }) => <ul className="mb-1">{children}</ul>,
+                }}
+              >
+                {role.description}
+              </ReactMarkdown>
+            </div>
+          )}
         </div>
       ))}
     </div>
