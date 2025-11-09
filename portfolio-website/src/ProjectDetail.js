@@ -2,14 +2,6 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from 'lucide-react';
 import { projectsData, personalInfo } from './data';
-import ChessBoard from './ChessBoard';
-
-// Map of component names to actual components
-const PREVIEW_COMPONENTS = {
-  ChessBoard: ChessBoard,
-  // Add more preview components here as you create them
-  // OtherProject: OtherProjectComponent,
-};
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -53,7 +45,7 @@ const ProjectDetail = () => {
   } = project;
 
   // Get the preview component
-  const PreviewComponent = previewComponent ? PREVIEW_COMPONENTS[previewComponent] : null;
+  const PreviewComponent = previewComponent ? previewComponent : null;
 
   // Format date
   const formatDate = (dateString) => {

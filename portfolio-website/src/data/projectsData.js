@@ -1,5 +1,6 @@
 // Central location for all project data
 // To add a new project, simply add a new object to this array
+import ChessBoard from "../projects/ChessBoard"; 
 
 export const projectsData = [
   {
@@ -14,7 +15,7 @@ export const projectsData = [
     tags: ["Python", "AI", "Minimax Algorithm", "Game Development", "Data Structures"],
     featured: true,
     // Preview component configuration
-    previewComponent: "ChessBoard", // Name of the component to render as preview
+    previewComponent: ChessBoard, // Name of the component to render as preview
     previewHeight: "600px", // Height of the preview window
     // Full project details for project page
     fullDescription: `
