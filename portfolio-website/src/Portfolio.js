@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import ProjectFilter from './ProjectFilter';
-import { projectsData, personalInfo, aboutMe, socialLinks, contactInfo } from './data';
+import { projectsData, personalInfo, aboutMe, socialLinks, contactInfo, timelineData } from './data';
+import Timeline from './Timeline';
+import Projects from './Projects';
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,7 +25,7 @@ export default function Portfolio() {
             <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               {personalInfo.initials}
             </div>
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8">
               <button onClick={() => scrollToSection('home')} className="hover:text-blue-400 transition">Home</button>
@@ -33,7 +35,7 @@ export default function Portfolio() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -65,7 +67,7 @@ export default function Portfolio() {
           <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
             {personalInfo.tagline}
           </p>
-          <button 
+          <button
             onClick={() => scrollToSection('projects')}
             className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition"
           >
@@ -106,32 +108,11 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
-          
-          {/* Project Filter */}
-          <ProjectFilter 
-            projects={projectsData} 
-            onFilterChange={setFilteredProjects}
-          />
+      {/* Timeline Section */}
+      <Timeline timelineData={timelineData} />
 
-          {/* Project Grid */}
-          {filteredProjects.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {filteredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-400 text-lg">No projects match your current filters.</p>
-              <p className="text-gray-500 text-sm mt-2">Try adjusting your search or clearing filters.</p>
-            </div>
-          )}
-        </div>
-      </section>
+      {/* Projects Section */}
+      <Projects projects={projectsData} />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-slate-800/50">

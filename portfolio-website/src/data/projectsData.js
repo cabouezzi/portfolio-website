@@ -1,7 +1,7 @@
 // Central location for all project data
 // To add a new project, simply add a new object to this array
 
-const projectsData = [
+export const projectsData = [
   {
     id: 1,
     slug: "chess-ai", // URL-friendly identifier for routing

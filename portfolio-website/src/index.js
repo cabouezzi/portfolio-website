@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+export const GlobalImageHandler = ({ children }) => {
+  useEffect(() => {
+    const handleError = (e) => {
+      if (e.target.tagName === "IMG") {
+        e.target.src = "/assets/placeholder.png";
+      }
+    };
+    document.addEventListener("error", handleError, true);
+    return () => document.removeEventListener("error", handleError, true);
+  }, []);
+
+  return children;
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <GlobalImageHandler>
+      <App />
+    </GlobalImageHandler>
   </React.StrictMode>
 );
 
