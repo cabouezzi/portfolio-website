@@ -13,7 +13,7 @@ export const projectsData = [
     image: "/chess/chess-screenshot.png", // Place your image in the public folder
     dateCreated: "2022-08",
     codeUrl: "https://github.com/cabouezzi/Chess-AI", // Add your GitHub repository URL
-    tags: ["Python", "AI", "Minimax Algorithm", "Game Development", "Data Structures"],
+    tags: ["Python", "Game Theory", "Data Structures", "Algorithms", "Game Development"],
     featured: true,
     // Preview component configuration
     previewComponent: ChessBoard, // Name of the component to render as preview
@@ -50,9 +50,9 @@ export const projectsData = [
     title: "Interactive Weather",
     description: "A 3D visualization of global wind and temperature patterns using aggregated NOAA data, built in Unity with custom shaders.",
     image: "/weather/example.png",
-    dateCreated: "2025-02",
+    dateCreated: "2022-02",
     codeUrl: "https://github.com/cabouezzi/Interactive-Weather",
-    tags: ["Unity", "C#", "ShaderLab", "3D Visualization", "Data Visualization"],
+    tags: ["Unity", "C#", "Data Visualization", "3D Visualization", "ShaderLab"],
     featured: false,
     previewComponent: InteractiveWeather,
     previewHeight: "500px",
