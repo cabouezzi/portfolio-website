@@ -3,6 +3,10 @@
 import ChessBoard from "../projects/ChessBoard";
 import InteractiveWeather from "../projects/InteractiveWeather";
 import Lira from "../projects/Lira";
+import BeeKeeper from "../projects/BeeKeeper";
+import Boids from "../projects/Boids";
+import SmartAndoverApp from "../projects/SmartAndoverApp";
+import MatchingCoco from "../projects/MatchingCoco"; 
 
 export const projectsData = [
   // Chess AI Project
@@ -123,24 +127,112 @@ It leverages .NET WebAssembly for runtime execution, redirects output to a custo
       "Advanced React state management for streaming logs",
     ],
   },
-  // Add more projects here following this structure:
-  // {
-  //   id: 2,
-  //   slug: "project-name",
-  //   title: "Project Title",
-  //   description: "Brief description of the project",
-  //   image: "/project-image.png",
-  //   dateCreated: "2024-11",
-  //   liveUrl: "https://...",
-  //   codeUrl: "https://github.com/...",
-  //   tags: ["React", "Node.js", "MongoDB"],
-  //   featured: false,
-  //   previewComponent: null, // Set to component name or null for no preview
-  //   previewHeight: "500px",
-  //   fullDescription: "Detailed description...",
-  //   challenges: [...],
-  //   learnings: [...]
-  // }
+  {
+  id: 4,
+  slug: "beekeeper",
+  title: "BeeKeeper",
+  description: "macOS/iOS app for managing hive inspections, hive health, and apiary data.",
+  image: "/beekeeper/screenshot.png",
+  dateCreated: "2018-01",
+  codeUrl: "https://github.com/cabouezzi/BeeKeeper",
+  productUrl: "https://apps.apple.com/us/app/beekeeper-apiary-game/id6747629982",
+  tags: ["Swift", "iOS", "macOS", "Beekeeping", "Data Management", "Hive Analytics"],
+  featured: false,
+  previewComponent: BeeKeeper,
+  previewHeight: "600px",
+  fullDescription: `BeeKeeper is a native macOS and iOS application for managing hive inspections, tracking hive health, and analyzing long-term apiary data.
+The app began as an experimental project back in 2018 and later underwent a serious rewrite around 2022 with the goal of releasing a polished, production-quality version.`,
+  challenges: [
+    "Designing a multi-platform UI that works well across macOS and iOS",
+    "Structuring inspection and hive-health data for long-term analytics",
+    "Refactoring and modernizing a large, early-era codebase from 2018"
+  ],
+  learnings: [
+    "Cross-platform Swift development using shared models & logic",
+    "Designing effective data schemas for time-series tracking",
+    "Managing and modernizing a multi-year legacy project"
+  ],
+},
+
+{
+  id: 5,
+  slug: "boids-ios",
+  title: "Boids",
+  description: "iOS/macOS simulation of flocking behavior using the classic Boids algorithm.",
+  image: "/boids/screenshot.png",
+  dateCreated: "2020-01",
+  codeUrl: "https://github.com/cabouezzi/Boids",
+  tags: ["Swift", "iOS", "macOS", "Algorithms", "Simulation", "Graphics"],
+  featured: false,
+  previewComponent: Boids,
+  previewHeight: "600px",
+  fullDescription: `Boids is an iOS/macOS app implementing the Boids flocking algorithm to simulate bird-like swarm behavior.
+It was built around 2020 as a spin-off from your work on BeeKeeper, inspired by building visual, agent-based simulations.`,
+  challenges: [
+    "Implementing efficient agent-based behavior in Swift",
+    "Rendering smooth animations with many entities simultaneously",
+    "Building input models for both macOS (mouse) and iOS (touch)"
+  ],
+  learnings: [
+    "Performance tuning in Swift for continuous simulations",
+    "Applying real mathematical algorithms to interactive UI",
+    "Adapting simulations for multiple Apple platforms"
+  ],
+},
+
+{
+  id: 6,
+  slug: "smart-andover-app",
+  title: "Smart Andover App",
+  description: "iOS student utility app built over a few months starting in September 2021.",
+  image: "/smart-andover-app/screenshot.png",
+  dateCreated: "2021-09",
+  codeUrl: "https://github.com/cabouezzi/Smart-Andover-App",
+  tags: ["Swift", "iOS", "Education", "Student Tools", "Mobile App"],
+  featured: false,
+  previewComponent: SmartAndoverApp,
+  previewHeight: "600px",
+  fullDescription: `Smart Andover App is an iOS application developed in a few months starting September 2021.
+It was designed to give students quick access to tools, schedules, and school resources in a streamlined mobile interface.`,
+  challenges: [
+    "Building a complete student utility app under a tight timeline",
+    "Designing a simple, intuitive UI for quick daily use",
+    "Debugging and testing across many iPhone device sizes"
+  ],
+  learnings: [
+    "Iterative app development and fast prototyping",
+    "Working with real user needs for educational apps",
+    "Deploying and testing on physical devices"
+  ],
+},
+
+{
+  id: 7,
+  slug: "matching-coco",
+  title: "Matching Coco",
+  description: "My first iOS app ever — a matching game featuring my cousin’s dog Coco.",
+  image: "/matching-coco/screenshot.png",
+  dateCreated: "2017-06",
+  codeUrl: "https://github.com/cabouezzi/Matching-Coco",
+  productUrl: null,
+  tags: ["Swift", "iOS", "Game", "Matching Game", "Personal Project"],
+  featured: false,
+  previewComponent: MatchingCoco,
+  previewHeight: "600px",
+  fullDescription: `Matching Coco was the very first iOS app I ever built, created in Summer 2017.
+It follows a basic card-matching tutorial from Code With Chris, which I modified by replacing the images with photos of my cousin’s dog, Coco.
+Although many beginner apps followed, this one stayed — and it predates my use of Git, which is why only a few early apps survive today.`,
+  challenges: [
+    "Learning iOS development completely from scratch",
+    "Replacing tutorial assets with custom images of Coco",
+    "Building an app before knowing about version control"
+  ],
+  learnings: [
+    "Basic Swift and UIKit development",
+    "State management and basic game logic",
+    "Understanding project structure and eventually the value of Git"
+  ],
+}
 ];
 
 export default projectsData;

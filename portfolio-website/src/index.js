@@ -8,7 +8,7 @@ export const GlobalImageHandler = ({ children }) => {
   useEffect(() => {
     const handleError = (e) => {
       if (e.target.tagName === "IMG") {
-        e.target.src = "/assets/placeholder.png";
+        e.target.src = "/default-image.png";
       }
     };
     document.addEventListener("error", handleError, true);
