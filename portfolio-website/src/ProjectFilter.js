@@ -27,7 +27,7 @@ const ProjectFilter = ({ projects, onFilterChange }) => {
 
       // Tag filter
       const matchesTags = selectedTags.length === 0 ||
-        selectedTags.every(selectedTag => project.tags.includes(selectedTag));
+        selectedTags.some(selectedTag => project.tags.includes(selectedTag));
 
       // Date filter
       let matchesDate = true;

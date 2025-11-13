@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
-import ProjectCard from './ProjectCard';
-import ProjectFilter from './ProjectFilter';
-import { projectsData, personalInfo, aboutMe, socialLinks, contactInfo, timelineData } from './data';
-import Timeline from './Timeline';
-import Projects from './Projects';
+import React, { useState } from "react";
+import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import ProjectCard from "./ProjectCard";
+import ProjectFilter from "./ProjectFilter";
+import {
+  projectsData,
+  personalInfo,
+  aboutMe,
+  socialLinks,
+  contactInfo,
+  timelineData,
+} from "./data";
+import Timeline from "./Timeline";
+import Projects from "./Projects";
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,7 +19,7 @@ export default function Portfolio() {
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    element?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
   };
 
@@ -28,10 +35,36 @@ export default function Portfolio() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8">
-              <button onClick={() => scrollToSection('home')} className="hover:text-blue-400 transition">Home</button>
-              <button onClick={() => scrollToSection('about')} className="hover:text-blue-400 transition">About</button>
-              <button onClick={() => scrollToSection('projects')} className="hover:text-blue-400 transition">Projects</button>
-              <button onClick={() => scrollToSection('contact')} className="hover:text-blue-400 transition">Contact</button>
+              <button
+                onClick={() => scrollToSection("home")}
+                className="hover:text-blue-400 transition"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => scrollToSection("about")}
+                className="hover:text-blue-400 transition"
+              >
+                About
+              </button>
+              <button
+                onClick={() => scrollToSection("experience")}
+                className="hover:text-blue-400 transition"
+              >
+                Experience
+              </button>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="hover:text-blue-400 transition"
+              >
+                Projects
+              </button>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="hover:text-blue-400 transition"
+              >
+                Contact
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -46,10 +79,36 @@ export default function Portfolio() {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden pb-4 space-y-2">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded">Home</button>
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded">About</button>
-              <button onClick={() => scrollToSection('projects')} className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded">Projects</button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded">Contact</button>
+              <button
+                onClick={() => scrollToSection("home")}
+                className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => scrollToSection("about")}
+                className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded"
+              >
+                About
+              </button>
+              <button
+                onClick={() => scrollToSection("experience")}
+                className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded"
+              >
+                Experience
+              </button>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded"
+              >
+                Projects
+              </button>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="block w-full text-left px-4 py-2 hover:bg-slate-700 rounded"
+              >
+                Contact
+              </button>
             </div>
           )}
         </div>
@@ -68,7 +127,7 @@ export default function Portfolio() {
             {personalInfo.tagline}
           </p>
           <button
-            onClick={() => scrollToSection('projects')}
+            onClick={() => scrollToSection("projects")}
             className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition"
           >
             View My Work
@@ -80,36 +139,68 @@ export default function Portfolio() {
       <section id="about" className="py-20 px-4 bg-slate-800/50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
+
+          {/* Grid for paragraphs + personal info */}
           <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Paragraphs */}
             <div>
               {aboutMe.paragraphs.map((paragraph, index) => (
                 <p key={index} className="text-gray-300 mb-6 leading-relaxed">
                   {paragraph}
                 </p>
               ))}
-              <h3 className="text-xl font-semibold mb-4">Skills & Technologies</h3>
-              <div className="flex flex-wrap gap-3">
-                {aboutMe.skills.map(skill => (
-                  <span key={skill} className="bg-slate-700 px-4 py-2 rounded-lg text-sm">
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </div>
+
+            {/* Personal Info */}
             <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg p-8 border border-slate-700">
               <div className="space-y-4 text-gray-300">
-                <p><span className="text-blue-400 font-semibold">Location:</span> {personalInfo.location}</p>
-                <p><span className="text-blue-400 font-semibold">Experience:</span> {personalInfo.experience}</p>
-                <p><span className="text-blue-400 font-semibold">Focus:</span> {personalInfo.focus}</p>
-                <p><span className="text-blue-400 font-semibold">Availability:</span> {personalInfo.availability}</p>
+                <p>
+                  <span className="text-blue-400 font-semibold">Location:</span>{" "}
+                  {personalInfo.location}
+                </p>
+                <p>
+                  <span className="text-blue-400 font-semibold">
+                    Experience:
+                  </span>{" "}
+                  {personalInfo.experience}
+                </p>
+                <p>
+                  <span className="text-blue-400 font-semibold">Focus:</span>{" "}
+                  {personalInfo.focus}
+                </p>
+                <p>
+                  <span className="text-blue-400 font-semibold">
+                    Availability:
+                  </span>{" "}
+                  {personalInfo.availability}
+                </p>
               </div>
+            </div>
+          </div>
+
+          {/* Skills & Technologies (full width) */}
+          <div className="mt-12">
+            <h3 className="text-xl font-semibold mb-4">
+              Skills & Technologies
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {[...new Set(aboutMe.skills)].map((skill) => (
+                <span
+                  key={skill}
+                  className="bg-slate-700 px-4 py-2 rounded-lg text-sm"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <Timeline timelineData={timelineData} />
+      <section id="experience" className="py-20 px-4">
+        <Timeline timelineData={timelineData} />
+      </section>
 
       {/* Projects Section */}
       <Projects projects={projectsData} />
@@ -122,13 +213,26 @@ export default function Portfolio() {
             {contactInfo.description}
           </p>
           <div className="flex justify-center gap-8 mb-12">
-            <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-blue-500 p-4 rounded-lg transition">
+            <a
+              href={socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-700 hover:bg-blue-500 p-4 rounded-lg transition"
+            >
               <Github size={32} />
             </a>
-            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-blue-500 p-4 rounded-lg transition">
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-700 hover:bg-blue-500 p-4 rounded-lg transition"
+            >
               <Linkedin size={32} />
             </a>
-            <a href={`mailto:${socialLinks.email}`} className="bg-slate-700 hover:bg-blue-500 p-4 rounded-lg transition">
+            <a
+              href={`mailto:${socialLinks.email}`}
+              className="bg-slate-700 hover:bg-blue-500 p-4 rounded-lg transition"
+            >
               <Mail size={32} />
             </a>
           </div>
