@@ -42,6 +42,7 @@ const ProjectDetail = () => {
     dateCreated, 
     liveUrl, 
     codeUrl, 
+    productUrl,
     tags, 
     fullDescription, 
     challenges, 
@@ -119,8 +120,8 @@ const ProjectDetail = () => {
             </div>
           )}
 
-          {/* Code Button */}
-          <div className="mb-12">
+          {/* Code and Product Buttons */}
+          <div className="mb-12 flex gap-4">
             {codeUrl && (
               <a
                 href={codeUrl}
@@ -130,6 +131,17 @@ const ProjectDetail = () => {
               >
                 <Github size={20} />
                 View Code
+              </a>
+            )}
+            {productUrl && (
+              <a
+                href={productUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition font-semibold inline-flex"
+              >
+                <ExternalLink size={20} />
+                View Product
               </a>
             )}
           </div>

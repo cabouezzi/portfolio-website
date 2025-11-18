@@ -4,7 +4,7 @@ import { ExternalLink, Github, Calendar } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
   const navigate = useNavigate();
-  const { slug, title, description, image, dateCreated, liveUrl, codeUrl, tags } = project;
+  const { slug, title, description, image, dateCreated, liveUrl, codeUrl, productUrl, tags } = project;
   
   // Show only top 3 tags
   const displayTags = tags.slice(0, 3);
@@ -88,17 +88,6 @@ const ProjectCard = ({ project }) => {
 
         {/* Buttons */}
         <div className="flex gap-4 mt-auto">
-          {liveUrl && (
-            <a 
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleLinkClick}
-              className="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition font-medium z-10"
-            >
-              <ExternalLink size={18} /> Live
-            </a>
-          )}
           {codeUrl && (
             <a 
               href={codeUrl}
@@ -108,6 +97,17 @@ const ProjectCard = ({ project }) => {
               className="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition font-medium z-10"
             >
               <Github size={18} /> Code
+            </a>
+          )}
+          {productUrl && (
+            <a 
+              href={productUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleLinkClick}
+              className="text-blue-400 hover:text-blue-300 flex items-center gap-2 transition font-medium z-10"
+            >
+              <ExternalLink size={18} /> Product
             </a>
           )}
         </div>

@@ -7,6 +7,7 @@ import BeeKeeper from "../projects/BeeKeeper";
 import Boids from "../projects/Boids";
 import SmartAndoverApp from "../projects/SmartAndoverApp";
 import MatchingCoco from "../projects/MatchingCoco";
+import GPTViewer from "../projects/GPTViewer";
 
 export const projectsData = [
   // Chess AI Project
@@ -42,8 +43,7 @@ export const projectsData = [
       - Move validation and legal move generation
       - Checkmate and stalemate detection
       - Position evaluation using piece values and board control metrics
-      - Clean command-line interface for gameplay
-    `,
+      - Clean command-line interface for gameplay`,
   },
   // Interactive Weather Visualization Project
   {
@@ -83,7 +83,7 @@ Key features include:
     description:
       "A browser-based IDE for the Lira language using .NET WASM and React.",
     image: "/lira-editor-screenshot.png", // Optional: screenshot of the editor
-    dateCreated: "2025-11",
+    dateCreated: "2023-08",
     codeUrl: "https://github.com/cabouezzi/lira",
     productUrl: null,
     tags: [
@@ -197,6 +197,24 @@ The app uses Firebase for backend data storage and authentication.`,
     fullDescription: `Matching Coco was the very first iOS app I ever built, created in Summer 2017.
 It follows a basic card-matching tutorial from Code With Chris, which I modified by replacing the images with photos of my cousin's dog, Coco.
 Many beginner apps followed, but are now lost as I was unaware of git at the time. This one stayed, however, because I knew I would want to keep my first ever app.`,
+  },
+  {
+    slug: "gpt",
+    title: "Infinite Shakespeare Script Generator",
+    description:
+      "A GPT2 model cursed to forever generate Shakespeare scripts...",
+    image: "/gpt/screenshot.png",
+    dateCreated: "2025-01",
+    codeUrl: "https://github.com/cabouezzi/gptscratch",
+    productUrl: null,
+    tags: ["PyTorch", "LLM", "Transformer", "Python", "NLP", "FastAPI"],
+    featured: false,
+    previewComponent: GPTViewer,
+    fullDescription: `This project is a fully custom GPT-style model server built in Python using PyTorch and hosted with FastAPI. It streams generated tokens in real time with frontend controls to play, pause, and reset token generation live. It was trained on the aggregation of all of Shakespeare's works.
+  
+  This project is a character-level GPT transformer with 6 transformer layers, each with 6 attention heads, an embedding dimension of 384, and a context window (block size) of 256 characters. It supports streaming output for interactive demos and demonstrates hands-on experience with transformer architectures, attention mechanisms, and sequence modeling.
+
+The associated React component displays the stream inside a styled scroll view, automatically wrapping text, auto-scrolling, and retaining only the most recent 50 lines. This setup allows lightweight experimentation with model inference loops, custom kernels, and streaming UX patterns similar to modern AI chat interfaces.`,
   },
 ];
 
