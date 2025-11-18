@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from 'lucide-react';
 import { projectsData, personalInfo } from './data';
+import ReactMarkdown from 'react-markdown';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [previewKey, setPreviewKey] = useState(0); // For forcing re-render
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
   
   // Find project by slug
   const project = projectsData.find(p => p.slug === slug);
@@ -77,55 +83,21 @@ const ProjectDetail = () => {
       {/* Project Content */}
       <div className="pt-24 pb-20 px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Hero Section */}
+          {/* Title */}
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               {title}
             </h1>
-            <p className="text-xl text-gray-300 mb-6">{description}</p>
-            
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-6 text-gray-400 mb-6">
-              <div className="flex items-center gap-2">
-                <Calendar size={18} />
-                <span>{formatDate(dateCreated)}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Tag size={18} />
-                <span>{tags.length} technologies</span>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-4">
-              {liveUrl && (
-                <a
-                  href={liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition font-semibold"
-                >
-                  <ExternalLink size={20} />
-                  View Live Demo
-                </a>
-              )}
-              {codeUrl && (
-                <a
-                  href={codeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition font-semibold"
-                >
-                  <Github size={20} />
-                  View Code
-                </a>
-              )}
+            {/* Date - Right under title */}
+            <div className="flex items-center gap-2 text-gray-400">
+              <Calendar size={18} />
+              <span>{formatDate(dateCreated)}</span>
             </div>
           </div>
 
           {/* Interactive Preview Window */}
           {PreviewComponent && (
-            <div className="mb-12">
+            <div className="mb-4">
               <div className="bg-slate-800 border-2 border-slate-700 rounded-xl overflow-hidden shadow-2xl">
                 {/* Preview Content */}
                 <div 
@@ -137,16 +109,40 @@ const ProjectDetail = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-gray-500 text-sm mt-3 text-center">
-                ✨ Try interacting with the live demo above!
-              </p>
             </div>
           )}
 
           {/* Project Image (shown if no preview component) */}
           {!PreviewComponent && image && (
-            <div className="mb-12 rounded-lg overflow-hidden border border-slate-700 shadow-2xl">
+            <div className="mb-4 rounded-lg overflow-hidden border border-slate-700 shadow-2xl">
               <img src={image} alt={title} className="w-full h-auto" />
+            </div>
+          )}
+
+          {/* Code Button */}
+          <div className="mb-12">
+            {codeUrl && (
+              <a
+                href={codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition font-semibold inline-flex"
+              >
+                <Github size={20} />
+                View Code
+              </a>
+            )}
+          </div>
+
+          {/* Description Section */}
+          {description && (
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold mb-4">Description</h2>
+              <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  {description}
+                </p>
+              </div>
             </div>
           )}
 
@@ -165,48 +161,38 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          {/* Full Description */}
+          {/* About This Project */}
           {fullDescription && (
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-4">About This Project</h2>
               <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
-                <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                  {fullDescription}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Challenges */}
-          {challenges && challenges.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">Challenges Faced</h2>
-              <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
-                <ul className="space-y-3">
-                  {challenges.map((challenge, index) => (
-                    <li key={index} className="text-gray-300 flex items-start gap-3">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>{challenge}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {/* Learnings */}
-          {learnings && learnings.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-4">Key Learnings</h2>
-              <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
-                <ul className="space-y-3">
-                  {learnings.map((learning, index) => (
-                    <li key={index} className="text-gray-300 flex items-start gap-3">
-                      <span className="text-blue-400 mt-1">✓</span>
-                      <span>{learning}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="prose prose-invert max-w-none">
+                  <ReactMarkdown
+                    components={{
+                      p: ({ children }) => (
+                        <p className="text-slate-300 text-base leading-relaxed mb-4">
+                          {children}
+                        </p>
+                      ),
+                      li: ({ children }) => (
+                        <li className="ml-4 list-disc text-slate-300 text-base leading-relaxed mb-2">
+                          {children}
+                        </li>
+                      ),
+                      ul: ({ children }) => <ul className="mb-4 space-y-1">{children}</ul>,
+                      ol: ({ children }) => <ol className="mb-4 ml-4 list-decimal space-y-1">{children}</ol>,
+                      img: ({ src, alt }) => (
+                        <img 
+                          src={src} 
+                          alt={alt || ''} 
+                          className="w-full rounded-lg my-6 border border-slate-600"
+                        />
+                      ),
+                    }}
+                  >
+                    {fullDescription}
+                  </ReactMarkdown>
+                </div>
               </div>
             </div>
           )}

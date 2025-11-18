@@ -115,7 +115,10 @@ We charge 10% interest in performance for each line of text.
   const loadExample = (example) => {
     setCurrentExample(example.name);
     setCode(example.code);
-    setOutput("");
+    const intro = `Welcome to Lira habibi!
+We charge 10% interest in performance for each line of text.
+------------------------------------------------------------`;
+    setOutput(intro + "\n");
   };
 
   const runCode = async () => {
@@ -155,7 +158,8 @@ We charge 10% interest in performance for each line of text.
         <textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="flex-1 w-full min-w-0 p-4 bg-slate-900 border border-slate-700 rounded-xl font-mono text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none shadow-lg"
+          className="flex-1 w-full min-w-0 p-4 bg-slate-900 border border-slate-700 rounded-xl font-mono text-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none shadow-lg whitespace-pre-wrap overflow-auto"
+          style={{ wordWrap: 'break-word' }}
         />
       </div>
 
@@ -171,7 +175,7 @@ We charge 10% interest in performance for each line of text.
             Run
           </button>
         </div>
-        <pre className="flex-1 w-full min-w-0 p-4 bg-black text-green-400 rounded-xl overflow-auto font-mono text-sm shadow-inner">
+        <pre className="flex-1 w-full min-w-0 p-4 bg-black text-green-400 rounded-xl overflow-auto font-mono text-sm shadow-inner whitespace-pre-wrap break-words">
           {output}
         </pre>
       </div>

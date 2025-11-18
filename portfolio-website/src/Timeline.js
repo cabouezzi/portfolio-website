@@ -47,7 +47,7 @@ export default function Timeline({ timelineData = [] }) {
   });
 
   return (
-    <div className="ml-8 flex flex-col gap-6">
+    <div className="relative flex flex-col gap-6">
       {splitEntries.map((entry, idx) => (
         <TimelineEntry key={idx} entry={entry} />
       ))}
@@ -57,12 +57,12 @@ export default function Timeline({ timelineData = [] }) {
 
 function TimelineEntry({ entry }) {
   return (
-    <div className="grid grid-cols-[32ch_1rem_1fr] gap-x-4 relative">
+    <div className="grid grid-cols-[140px_1rem_1fr] gap-x-2 relative max-w-4xl">
       {/* Column 1: Dates */}
       {entry.roles?.map((role, idx) => (
         <div
           key={`date-${idx}`}
-          className={`w-32 text-right text-sm text-slate-400 shrink-0 whitespace-nowrap`}
+          className={`text-right text-sm text-slate-400 shrink-0 whitespace-nowrap pr-2`}
           style={{ gridColumn: 1, gridRow: idx + 2 }}
         >
           {role.end ? `${role.start} – ${role.end}` : role.start}
@@ -73,10 +73,10 @@ function TimelineEntry({ entry }) {
       {entry.roles?.map((role, idx) => (
         <div
           key={`dot-${idx}`}
-          className="flex justify-center"
+          className="flex justify-center relative"
           style={{ gridColumn: 2, gridRow: idx + 2 }}
         >
-          <div className="w-3 h-3 bg-slate-400 rounded-full mt-1 z-10" />
+          <div className="w-3 h-3 bg-slate-400 rounded-full mt-1 z-10 relative" />
         </div>
       ))}
 
