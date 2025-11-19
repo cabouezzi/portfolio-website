@@ -7,6 +7,9 @@ export default function GPTViewer() {
   const [error, setError] = useState(null);
   const scrollRef = useRef(null);
 
+  const protocol = window.location.protocol === "https:" ? "https" : "http";
+  const endpoint = `${protocol}://${window.location.host}/shakespeare`;
+
   // Auto-scroll only if user is at the bottom
   useEffect(() => {
     if (!scrollRef.current) return;
@@ -24,8 +27,7 @@ export default function GPTViewer() {
 
   const connectStream = () => {
     if (eventSource) return;
-
-    const es = new EventSource("http://localhost:8000/stream");
+    const es = new EventSource(`${endpoint}/stream`);
     setEventSource(es);
 
     es.onmessage = (e) => {
@@ -63,7 +65,7 @@ export default function GPTViewer() {
   const play = async () => {
     try {
       setError(null);
-      await fetch("http://localhost:8000/play", { method: "POST" });
+      await fetch(`${endpoint}/play`, { method: "POST" });
       connectStream();
       setIsPlaying(true);
     } catch (err) {
@@ -75,7 +77,7 @@ export default function GPTViewer() {
   const pause = async () => {
     try {
       setError(null);
-      await fetch("http://localhost:8000/pause", { method: "POST" });
+      await fetch(`${endpoint}/pause`, { method: "POST" });
       stopStream();
       setIsPlaying(false);
     } catch (err) {
@@ -87,7 +89,7 @@ export default function GPTViewer() {
     try {
       setError(null);
       stopStream();
-      await fetch("http://localhost:8000/reset", { method: "POST" });
+      await fetch(`${endpoint}/reset`, { method: "POST" });
       setLines([""]);
       setIsPlaying(false);
     } catch (err) {
@@ -107,7 +109,7 @@ export default function GPTViewer() {
     <div className="flex flex-col gap-4 h-full w-full">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold">Infinite Shakespeare Script Generator!</h2>
-        
+
         <div className="flex gap-2">
           <button
             onClick={togglePlayPause}

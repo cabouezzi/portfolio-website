@@ -5,7 +5,7 @@ export const personalInfo = {
   name: "Chaniel Abou-Ezzi",
   initials: "CA",
   title: "Current Role: Software Engineer at Apple ",
-  tagline: "Hi, I'm Chaniel! I used to code for fun and now it's my job. 🙂",
+  tagline: "Pronounced like \"Daniel\", but with a Ch",
   location: "Austin, TX",
   experience: "Early Career",
   focus: "iOS Development and AI",

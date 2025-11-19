@@ -19,7 +19,7 @@ export const projectsData = [
     image: "/chess/chess-screenshot.png", // Place your image in the public folder
     dateCreated: "2022-08",
     codeUrl: "https://github.com/cabouezzi/Chess-AI", // Add your GitHub repository URL
-    productUrl: null,
+    productUrl: "https://github.com/cabouezzi/Chess-AI/blob/main/Chess%20AI.zip?raw=true",
     tags: [
       "Python",
       "Game Theory",
@@ -32,18 +32,18 @@ export const projectsData = [
     previewComponent: ChessBoard, // Name of the component to render as preview
     previewHeight: "600px", // Height of the preview window
     // Full project details for project page
-    fullDescription: `
-      This Chess AI project implements a sophisticated chess engine capable of playing against human opponents at various difficulty levels.
+    fullDescription: `This Chess AI project implements a sophisticated chess engine capable of playing against human opponents at various difficulty levels. This is a very simply web UI built simply to display its capabilities in the portfolio, while the original, slightly more functional UI is a macOS desktop app (click the product link to download).
       
-      The engine uses the minimax algorithm with alpha-beta pruning to efficiently evaluate potential moves and select the best strategy. The AI can look several moves ahead and make strategic decisions based on position evaluation.
+The engine uses the minimax algorithm with alpha-beta pruning to efficiently evaluate potential moves and select the best strategy. The AI can look several moves ahead and make strategic decisions based on position evaluation.
       
-      Key features include:
-      - Full chess rules implementation including castling, en passant, and pawn promotion
-      - Adjustable difficulty levels (1-5) that control search depth
-      - Move validation and legal move generation
-      - Checkmate and stalemate detection
-      - Position evaluation using piece values and board control metrics
-      - Clean command-line interface for gameplay`,
+Key features include:
+- Hybrid board representation - Bitboards and Piece List
+- Move generation dependent on bitwise operations and bitmasks
+- Negamax search algorithm with Alpha-Beta pruning, configurable for depth search or time-constrained search
+- Move ordering to search moves with higher likelihood of benefits
+- Simple evaluation function counting material and piece-square tables (i.e. positional advantages)
+- FEN and PGN parser and serializer for importing and exporting games
+- Small file containing chess openings in PGN format`,
   },
   // Interactive Weather Visualization Project
   {
