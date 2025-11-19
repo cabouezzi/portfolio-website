@@ -15,7 +15,11 @@ import Projects from "./Projects";
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [filteredProjects, setFilteredProjects] = useState(projectsData);
+  // Sort projects by date (most recent first)
+  const sortedProjects = [...projectsData].sort((a, b) => {
+    return b.dateCreated.localeCompare(a.dateCreated);
+  });
+  const [filteredProjects, setFilteredProjects] = useState(sortedProjects);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -206,7 +210,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <Projects projects={projectsData} />
+      <Projects projects={sortedProjects} />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-slate-800/50">
