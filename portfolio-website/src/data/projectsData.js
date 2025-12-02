@@ -37,9 +37,12 @@ export const projectsData = [
     previewComponent: ChessBoard, // Name of the component to render as preview
     previewHeight: "600px", // Height of the preview window
     // Full project details for project page
-    fullDescription: `This Chess AI project implements a sophisticated chess engine capable of playing against human opponents at various difficulty levels. This is a very simply web UI built simply to display its capabilities in the portfolio, while the original, slightly more functional UI is a macOS desktop app (click the product link to download).
+    fullDescription: `This Chess AI project implements a chess engine capable of playing against human opponents at various difficulty levels. This is a very simply web UI built simply to display its capabilities in the portfolio, while the original, slightly more functional UI is a macOS desktop app (click the product link to download).
       
 The engine uses the minimax algorithm with alpha-beta pruning to efficiently evaluate potential moves and select the best strategy. The AI can look several moves ahead and make strategic decisions based on position evaluation.
+
+# **Main Takeaway**
+Chess is a very complex game, with more possible positions than atoms in the observable universe. The speed of the engine demonstrates a sophisticated understanding of data structures, algorithms, and optimization techniques to efficiently find the best move in such a large search space.
       
 Key features include:
 - Hybrid board representation - Bitboards and Piece List
@@ -48,7 +51,9 @@ Key features include:
 - Move ordering to search moves with higher likelihood of benefits
 - Simple evaluation function counting material and piece-square tables (i.e. positional advantages)
 - FEN and PGN parser and serializer for importing and exporting games
-- Small file containing chess openings in PGN format`,
+- Small file containing chess openings in PGN format
+
+Most research was done from the [chess programming wiki](https://www.chessprogramming.org/Main_Page)`,
   },
   // Interactive Weather Visualization Project
   {
