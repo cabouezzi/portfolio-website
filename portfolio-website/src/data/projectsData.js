@@ -21,11 +21,16 @@ export const projectsData = [
     codeUrl: "https://github.com/cabouezzi/Chess-AI", // Add your GitHub repository URL
     productUrl: "https://github.com/cabouezzi/Chess-AI/blob/main/Chess%20AI.zip?raw=true",
     tags: [
-      "Python",
-      "Game Theory",
+      "Artificial Intelligence",
       "Data Structures",
       "Algorithms",
+      "Game Theory",
+      "Minimax",
+      "Alpha-Beta Pruning",
+      "Iterative Deepening",
       "Game Development",
+      "Swift",
+      "Python"
     ],
     featured: true,
     // Preview component configuration
@@ -60,6 +65,7 @@ Key features include:
       "C#",
       "Data Visualization",
       "3D Visualization",
+      "3D Math",
       "ShaderLab",
     ],
     featured: false,
@@ -191,7 +197,7 @@ The app uses Firebase for backend data storage and authentication.`,
     dateCreated: "2017-06",
     codeUrl: "https://github.com/cabouezzi/Matching-Coco",
     productUrl: null,
-    tags: ["Swift", "iOS", "Game", "Matching Game", "Personal Project"],
+    tags: ["Swift", "iOS", "Game Development", "UIKit"],
     featured: false,
     previewComponent: MatchingCoco,
     fullDescription: `Matching Coco was the very first iOS app I ever built, created in Summer 2017.
@@ -207,7 +213,7 @@ Many beginner apps followed, but are now lost as I was unaware of git at the tim
     dateCreated: "2025-01",
     codeUrl: "https://github.com/cabouezzi/gptscratch",
     productUrl: null,
-    tags: ["PyTorch", "LLM", "Transformer", "Python", "NLP", "FastAPI"],
+    tags: ["PyTorch", "LLM", "Transformer", "Machine Learning", "Neural Networks", "Python", "NLP", "FastAPI"],
     featured: false,
     previewComponent: GPTViewer,
     fullDescription: `This project is a fully custom GPT-style model server built in Python using PyTorch and hosted with FastAPI. It streams generated tokens in real time with frontend controls to play, pause, and reset token generation live. It was trained on the aggregation of all of Shakespeare's works.
