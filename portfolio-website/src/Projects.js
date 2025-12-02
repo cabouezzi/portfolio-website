@@ -14,9 +14,17 @@ export default function ProjectsSection({ projects }) {
   const [filteredProjects, setFilteredProjects] = useState(projects);
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <div className="p-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+        {/* Page Title */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-2">Projects</h1>
+        </div>
+
+        {/* Intro Text */}
+        <div className="mb-4">
+          <p className="text-gray-400 text-sm">Try out the interactive demos below - click any project to get started!</p>
+        </div>
 
         {/* Project Filter */}
         <ProjectFilter
@@ -38,6 +46,6 @@ export default function ProjectsSection({ projects }) {
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 }
