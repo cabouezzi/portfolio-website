@@ -41,7 +41,11 @@ export const projectsData = [
       
 The engine uses the minimax algorithm with alpha-beta pruning to efficiently evaluate potential moves and select the best strategy. The AI can look several moves ahead and make strategic decisions based on position evaluation.
 
+<<<<<<< Updated upstream
 # **Main Takeaway**
+=======
+## Key Takeaway
+>>>>>>> Stashed changes
 Chess is a very complex game, with more possible positions than atoms in the observable universe. The speed of the engine demonstrates a sophisticated understanding of data structures, algorithms, and optimization techniques to efficiently find the best move in such a large search space.
       
 Key features include:

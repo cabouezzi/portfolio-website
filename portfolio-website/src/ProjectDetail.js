@@ -116,7 +116,15 @@ const ProjectDetail = () => {
           {/* Project Image (shown if no preview component) */}
           {!PreviewComponent && image && (
             <div className="mb-4 rounded-lg overflow-hidden border border-slate-700 shadow-2xl">
-              <img src={image} alt={title} className="w-full h-auto" />
+              <img 
+                src={image} 
+                alt={title} 
+                className="w-full h-auto"
+                onError={(e) => {
+                  console.log(`Project detail image failed to load: ${title}`);
+                  e.target.style.display = 'none';
+                }}
+              />
             </div>
           )}
 

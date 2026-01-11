@@ -42,6 +42,10 @@ const ProjectCard = ({ project }) => {
             src={image} 
             alt={title} 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            onError={(e) => {
+              console.log(`Project image failed to load: ${title}`);
+              e.target.style.display = 'none';
+            }}
           />
         ) : (
           <div className="flex items-center justify-center h-full">

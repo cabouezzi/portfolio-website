@@ -126,6 +126,10 @@ export default function Portfolio() {
               src="/logo.png" 
               alt="Logo" 
               className="h-10 w-10 object-cover rounded-full"
+              onError={(e) => {
+                console.log('Logo image failed to load');
+                e.target.style.display = 'none';
+              }}
             />
           </div>
         </header>
