@@ -8,6 +8,7 @@ import Boids from "../projects/Boids";
 import SmartAndoverApp from "../projects/SmartAndoverApp";
 import MatchingCoco from "../projects/MatchingCoco";
 import GPTViewer from "../projects/GPTViewer";
+import MacMiniHomelab from "../projects/MacMiniHomelab";
 
 export const projectsData = [
   // Chess AI Project
@@ -230,6 +231,42 @@ Many beginner apps followed, but are now lost as I was unaware of git at the tim
   This project is a character-level GPT transformer with 6 transformer layers, each with 6 attention heads, an embedding dimension of 384, and a context window (block size) of 256 characters. It supports streaming output for interactive demos and demonstrates hands-on experience with transformer architectures, attention mechanisms, and sequence modeling.
 
 The associated React component displays the stream inside a styled scroll view, automatically wrapping text, auto-scrolling, and retaining only the most recent 50 lines. This setup allows lightweight experimentation with model inference loops, custom kernels, and streaming UX patterns similar to modern AI chat interfaces.`,
+  },
+  {
+    slug: "mac-mini-homelab",
+    title: "Mac Mini M2 Homelab Server",
+    description:
+      "Converted an Apple internship Mac Mini M2 into a dual-boot headless Ubuntu Asahi setup that is essentially my personal server, with hardened remote access, VPN connectivity, and least-privilege self-hosted services.",
+    image: "/default-image.png",
+    dateCreated: "2024-08",
+    dateRange: "August 2024 - Present",
+    codeUrl: null,
+    productUrl: null,
+    tags: [
+      "Homelab",
+      "Linux",
+      "Ubuntu Asahi",
+      "Networking",
+      "Firewall",
+      "Reverse Proxy",
+      "DuckDNS",
+      "VPN",
+      "Self-Hosting",
+    ],
+    featured: false,
+    previewComponent: MacMiniHomelab,
+    previewHeight: "420px",
+    fullDescription: `I received a free Mac Mini M2 as part of my Apple internship and turned it into a personal homelab setup that is essentially my personal server. I dual-booted it with headless Ubuntu Asahi and use it as an always-on box for networking and self-hosted infrastructure experiments.
+
+Core setup includes:
+- Host-level firewall hardening
+- Router port forwarding to the Mac Mini M2
+- DuckDNS-based dynamic DNS so I don't need a paid static IP
+- Reverse proxy routing on the mini, with internal services exposed only on private ports
+- A VPN endpoint so I can securely reach my home network while traveling
+- Self-hosting OpenClaw with limited permissions (least-privilege access), rather than broad admin-level exposure
+
+Because this is infrastructure tied to my home network, I do not expose the live system publicly. This website itself is the demo, using architecture notes and redacted configuration details to show the networking and security model.`,
   },
 ];
 

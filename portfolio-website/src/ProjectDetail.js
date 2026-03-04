@@ -40,6 +40,7 @@ const ProjectDetail = () => {
     description, 
     image, 
     dateCreated, 
+    dateRange,
     liveUrl, 
     codeUrl, 
     productUrl,
@@ -92,7 +93,7 @@ const ProjectDetail = () => {
             {/* Date - Right under title */}
             <div className="flex items-center gap-2 text-gray-400">
               <Calendar size={18} />
-              <span>{formatDate(dateCreated)}</span>
+              <span>{dateRange || formatDate(dateCreated)}</span>
             </div>
           </div>
 

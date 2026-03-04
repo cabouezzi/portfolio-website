@@ -23,7 +23,7 @@ export default function ProjectsSection({ projects }) {
 
         {/* Intro Text */}
         <div className="mb-4">
-          <p className="text-gray-400 text-sm">Try out the interactive demos below - click any project to get started!</p>
+          <p className="text-gray-400 text-sm">Explore projects below - some include interactive demos, others include implementation deep-dives.</p>
         </div>
 
         {/* Project Filter */}

@@ -4,7 +4,7 @@ import { ExternalLink, Github, Calendar } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
   const navigate = useNavigate();
-  const { slug, title, description, image, dateCreated, liveUrl, codeUrl, productUrl, tags } = project;
+  const { slug, title, description, image, dateCreated, dateRange, liveUrl, codeUrl, productUrl, tags } = project;
   
   // Show only top 3 tags
   const displayTags = tags.slice(0, 3);
@@ -69,7 +69,7 @@ const ProjectCard = ({ project }) => {
           </h3>
           <div className="flex items-center text-gray-400 text-sm">
             <Calendar size={14} className="mr-1" />
-            <span>{formatDate(dateCreated)}</span>
+            <span>{dateRange || formatDate(dateCreated)}</span>
           </div>
         </div>
 
