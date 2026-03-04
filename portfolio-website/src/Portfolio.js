@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, X, Github, Linkedin, Mail, User, Briefcase, GraduationCap } from "lucide-react";
+import { Menu, X, Github, Linkedin, Mail, User, Briefcase, GraduationCap, Download } from "lucide-react";
 import {
   projectsData,
   personalInfo,
@@ -263,6 +263,18 @@ function ExperienceView() {
       {/* Page Title */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">Experience</h1>
+      </div>
+
+      {/* Download Resume Button */}
+      <div className="mb-8">
+        <a
+          href="/resume.pdf"
+          download
+          className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition font-semibold inline-flex"
+        >
+          <Download size={20} />
+          Download Resume
+        </a>
       </div>
 
       <section>
