@@ -24,7 +24,7 @@ Activity: Peer Mentor, Arab Cultural Association, Chess Club
         end: "Present",
         header: "iOS Software Engineer",
         description: `
-Worked on the frontend of the EasyPay app in Retail Engineering, the POS software for Apple Retail. Work consisted of utilizing LLMs for streamlining frontend development.
+Worked on the frontend of the EasyPay app in Retail Engineering, the POS software for Apple Retail.
         `
       },
       {
