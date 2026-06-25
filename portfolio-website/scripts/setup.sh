@@ -37,6 +37,48 @@ start_screen() {
   fi
 }
 
+is_port_listening() {
+  local port="$1"
+ 
+  if lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; then
+    return 0
+  fi
+
+  if command -v ss >/dev/null 2>&1 && ss -ltn | awk '{ print $4 }' | grep -Eq "[:.]${port}$"; then
+    return 0
+  fi
+
+  return 1
+}
+
+print_port_status() {
+  local label="$1"
+  local port="$2"
+
+  if is_port_listening "$port"; then
+    echo -e "${GREEN}Listening:${NC} ${label} on port ${port}"
+  else
+    echo -e "${YELLOW}Not listening:${NC} ${label} on port ${port}"
+  fi
+}
+
+wait_for_port() {
+  local label="$1"
+  local port="$2"
+  local attempts="${3:-10}"
+
+  for _ in $(seq 1 "$attempts"); do
+    if is_port_listening "$port"; then
+      return 0
+    fi
+
+    sleep 1
+  done
+
+  echo -e "${YELLOW}Still waiting:${NC} ${label} has not opened port ${port}. Check logs if its screen remains active."
+  return 1
+}
+
 first_existing_dir() {
   for dir in "$@"; do
     if [[ -d "$dir" ]]; then
@@ -51,6 +93,21 @@ first_existing_dir() {
 echo -e "${BLUE}Setting up portfolio website services...${NC}"
 
 start_screen "react-app" "cd '$ROOT_DIR' && npm run react-start"
+
+CHESS_AI_PACKAGE_DIR="${CHESS_AI_PACKAGE_DIR:-}"
+if [[ -z "$CHESS_AI_PACKAGE_DIR" ]]; then
+  CHESS_AI_PACKAGE_DIR="$(first_existing_dir \
+    "$ROOT_DIR/../../Chess-AI/Chess-AI-Package" \
+    "$HOME/Code/Chess-AI/Chess-AI-Package" \
+    "$HOME/Developer/Chess-AI/Chess-AI-Package" \
+  )"
+fi
+
+if [[ -n "${CHESS_AI_PACKAGE_DIR:-}" && -f "$CHESS_AI_PACKAGE_DIR/Package.swift" ]]; then
+  start_screen "chess-ws-api" "cd '$CHESS_AI_PACKAGE_DIR' && swift run chaniels-chess-engine serve --hostname 127.0.0.1 --port 8080"
+else
+  echo -e "${YELLOW}Skipping chess-ws-api:${NC} set CHESS_AI_PACKAGE_DIR to the Chess-AI package repo if this demo should run."
+fi
 
 GPTSCRATCH_DIR="${GPTSCRATCH_DIR:-}"
 if [[ -z "$GPTSCRATCH_DIR" ]]; then
@@ -75,18 +132,26 @@ else
   echo -e "${YELLOW}Skipping shakespeare-api:${NC} set GPTSCRATCH_DIR to the gptscratch repo if this demo should run."
 fi
 
-if [[ -n "${CHESS_SERVER_CMD:-}" ]]; then
-  start_screen "chess-ws-api" "$CHESS_SERVER_CMD"
-else
-  echo -e "${YELLOW}Skipping chess-ws-api:${NC} set CHESS_SERVER_CMD to the legacy Chess AI WebSocket server command if needed."
+echo
+echo -e "${BLUE}Waiting for service ports...${NC}"
+wait_for_port "React app" 3001 10 || true
+wait_for_port "Chess WebSocket API" 8080 30 || true
+if has_screen_session "shakespeare-api"; then
+  wait_for_port "Shakespeare API" 8000 10 || true
 fi
 
 echo
 echo -e "${BLUE}Active screen sessions:${NC}"
 screen -list
 echo
+echo -e "${BLUE}Port status:${NC}"
+print_port_status "React app" 3001
+print_port_status "Chess WebSocket API" 8080
+print_port_status "Shakespeare API" 8000
+echo
 echo "Attach examples:"
 echo "  screen -r react-app"
+echo "  screen -r chess-ws-api"
 echo "  screen -r shakespeare-api"
 echo
 echo "Logs:"
