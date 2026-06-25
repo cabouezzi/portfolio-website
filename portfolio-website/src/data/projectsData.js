@@ -9,8 +9,32 @@ import SmartAndoverApp from "../projects/SmartAndoverApp";
 import MatchingCoco from "../projects/MatchingCoco";
 import GPTViewer from "../projects/GPTViewer";
 import MacMiniHomelab from "../projects/MacMiniHomelab";
+// import ChessAI2 from "../projects/ChessAI2";
 
 export const projectsData = [
+  // {
+  //   slug: "chess-ai-2",
+  //   title: "Chess AI 2.0",
+  //   description:
+  //     "A checkpoint arena for UCI-compatible reinforcement-learning chess models, with configurable white and black model selection and full game replay controls.",
+  //   image: "/chess/chess-screenshot.png",
+  //   dateCreated: "2026-04",
+  //   codeUrl: null,
+  //   productUrl: null,
+  //   tags: ["Reinforcement Learning", "Chess", "UCI", "PyTorch", "Machine Learning", "React"],
+  //   featured: true,
+  //   previewComponent: ChessAI2,
+  //   previewHeight: "720px",
+  //   fullDescription: `Chess AI 2.0 is a live model arena for comparing reinforcement-learning chess checkpoints through a UCI-compatible project API.
+  //
+  // The demo fetches available model identifiers from the project API, lets the viewer assign one checkpoint to White and another to Black, and then plays a complete model-vs-model game by sending the current UCI move history plus the selected side's model id for each move.
+  //
+  // The interface supports two run modes:
+  // - Immediate mode queries the API as fast as each model can respond.
+  // - Delayed mode waits three seconds between model queries so the game can be watched as it develops.
+  //
+  // After the game ends, the board becomes a replay viewer with controls to jump to the beginning, step backward, step forward, or jump to the final position.`,
+  // },
   // Chess AI Project
   {
     slug: "chess-ai", // URL-friendly identifier for routing

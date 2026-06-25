@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "bash scripts/start.sh",
+    "setup": "bash scripts/setup.sh",
     "start:attach": "bash scripts/start.sh --attach",
     "restart": "bash scripts/restart.sh",
     "react-start": "react-scripts start",

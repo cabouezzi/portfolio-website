@@ -258,6 +258,28 @@ function ProfileView() {
 
 // Experience View Component
 function ExperienceView() {
+  const handleResumeDownload = async () => {
+    const resumeUrl = `${process.env.PUBLIC_URL}/resume.pdf`;
+
+    try {
+      const response = await fetch(resumeUrl, { method: "HEAD" });
+
+      if (response.ok) {
+        const link = document.createElement("a");
+        link.href = resumeUrl;
+        link.download = "Chaniel_Abou-Ezzi_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        return;
+      }
+    } catch (error) {
+      console.warn("Resume availability check failed:", error);
+    }
+
+    window.location.href = `mailto:${socialLinks.email}?subject=${encodeURIComponent("Resume Request")}`;
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       {/* Page Title */}
@@ -267,14 +289,14 @@ function ExperienceView() {
 
       {/* Download Resume Button */}
       <div className="mb-8">
-        <a
-          href="/resume.pdf"
-          download
+        <button
+          type="button"
+          onClick={handleResumeDownload}
           className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition font-semibold inline-flex"
         >
           <Download size={20} />
           Download Resume
-        </a>
+        </button>
       </div>
 
       <section>
